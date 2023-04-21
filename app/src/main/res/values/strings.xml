@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SubmissionIntermediate</string>
+    <string name="signin_txt">Sign In</string>
+    <string name="motto_txt">To inspire and nurture the human spirit – one person, one cup and one neighborhood at a time</string>
+    <string name="username_txt">Username</string>
+    <string name="password_txt">Password</string>
+    <string name="login_txt">Login</string>
+    <string name="dont_have_account_txt">Dont Have Account?</string>
+    <string name="visibility_txt">Visibility</string>
+    <string name="email_txt">Email</string>
+    <string name="nama_txt">Nama</string>
+    <string name="namaUser_txt">Nama User</string>
+    <string name="camera_btn">Camera</string>
+    <string name="galeri_btn">Gallery</string>
+    <string name="upload_btn">Upload</string>
+    <string name="description_txt">Description</string>
+    <string name="title_name">Starbags</string>
+    <string name="create_new_member_txt">Create New Member</string>
+    <string name="register_txt">Register</string>
+    <string name="login_here_txt">Login Here</string>
+    <string name="signup_txt">Sign Up</string>
+    <string name="register_failed">Register Failed</string>
+</resources>
