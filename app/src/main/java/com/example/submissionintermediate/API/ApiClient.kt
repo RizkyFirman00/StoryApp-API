@@ -8,28 +8,23 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient {
-    companion object {
-        abstract val dataStore: DataStore<Preferences>
-        private val retrofit = Retrofit.Builder()
+class ApiClient(private val dataStore: DataStore<Preferences>) {
+
+    private fun retrofit(): Retrofit {
+        return Retrofit.Builder()
             .baseUrl("https://story-api.dicoding.dev/v1/")
             .client(
                 OkHttpClient.Builder()
-                    .apply {
-                        val loggingInterceptor = if (BuildConfig.DEBUG) {
-                            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-                        } else {
-                            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-                        }
-
-                        addInterceptor(AuthInterceptor(dataStore),
-                        addInterceptor(loggingInterceptor)
-                    }
+                    .addInterceptor(
+                        HttpLoggingInterceptor()
+                            .setLevel(HttpLoggingInterceptor.Level.BODY)
+                    )
+                    .addInterceptor(AuthInterceptor(dataStore))
                     .build()
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-        val apiService = retrofit.create(ApiService::class.java)
     }
+
+    val apiService: ApiService = retrofit().create(ApiService::class.java)
 }
