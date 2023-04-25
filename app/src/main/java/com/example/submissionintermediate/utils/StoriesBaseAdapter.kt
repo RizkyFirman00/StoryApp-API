@@ -7,15 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 abstract class StoriesBaseAdapter<T, V : ViewBinding>(
-    private val diffUtilCallbackListener: diffUtilCallbackListener.DiffCallbackListener<T>
+    private val diffUtilCallbackListener: DiffCallbackListener<T>
 ) : RecyclerView.Adapter<StoriesBaseAdapter.BaseViewHolder>() {
 
     var data = mutableListOf<T>()
     abstract fun onCreateViewHolder(inflater: LayoutInflater, container: ViewGroup): ViewBinding
     abstract fun bind(binding: V, item: T, position: Int, count: Int)
 
-    fun dataSet(items : List<T>) {
-        val diffResult = DiffUtil.calculateDiff(diffUtilCallbackListener(items, items.toMutableList(), diffUtilCallbackListener))
+    fun dataSet(items: List<T>) {
+        val diffResult = DiffUtil.calculateDiff(
+            diffUtilCallbackListener(
+                data,
+                items.toMutableList(),
+                diffUtilCallbackListener
+            )
+        )
         data = items.toMutableList()
         diffResult.dispatchUpdatesTo(this)
     }
@@ -32,8 +38,9 @@ abstract class StoriesBaseAdapter<T, V : ViewBinding>(
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) =
         bind(holder.binding as V, data[position], position, data.size)
 
-    override fun getItemCount(): Int = data.size
-
+    override fun getItemCount(): Int {
+        return data.size
+    }
 }
 
 class diffUtilCallbackListener<T>(
@@ -57,8 +64,8 @@ class diffUtilCallbackListener<T>(
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         return old[oldItemPosition] == new[newItemPosition]
     }
+}
 
-    interface DiffCallbackListener<T> {
-        fun areItemsTheSame(oldItem: T, newItem: T): Boolean
-    }
+interface DiffCallbackListener<T> {
+    fun areItemsTheSame(oldItem: T, newItem: T): Boolean
 }

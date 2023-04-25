@@ -8,8 +8,8 @@ import com.bumptech.glide.Glide
 import androidx.core.util.Pair
 import com.example.submissionintermediate.DataClass.Model.StoryModelEntity
 import com.example.submissionintermediate.databinding.ItemRvBinding
+import com.example.submissionintermediate.utils.DiffCallbackListener
 import com.example.submissionintermediate.utils.StoriesBaseAdapter
-import com.example.submissionintermediate.utils.diffUtilCallbackListener
 
 class StoriesAdapter :
     StoriesBaseAdapter<StoryModelEntity, ItemRvBinding>(diffUtilCallbackListener = diffUtilStory) {
@@ -43,10 +43,8 @@ class StoriesAdapter :
         }
     }
 
-    override fun getItemCount(): Int = data.size
-
     companion object {
-        val diffUtilStory = object : diffUtilCallbackListener.DiffCallbackListener<StoryModelEntity> {
+        val diffUtilStory = object : DiffCallbackListener<StoryModelEntity> {
                 override fun areItemsTheSame(
                     oldItem: StoryModelEntity,
                     newItem: StoryModelEntity

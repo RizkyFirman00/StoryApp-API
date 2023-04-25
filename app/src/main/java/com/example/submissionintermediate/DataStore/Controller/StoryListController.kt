@@ -1,5 +1,6 @@
 package com.example.submissionintermediate.DataStore.Controller
 
+import android.util.Log
 import com.example.submissionintermediate.DataClass.Model.StoryModelEntity
 import com.example.submissionintermediate.DataStore.InterfaceRepository.StoryRepository
 import com.example.submissionintermediate.utils.ResultMain

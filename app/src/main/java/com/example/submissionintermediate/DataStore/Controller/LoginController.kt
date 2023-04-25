@@ -28,7 +28,7 @@ class LoginController(
                         )
                     )
                 }
-                Log.d("LoginController", "invoke: name:${result.loginResult?.name} userId:${result.loginResult?.userId} token:${result.loginResult?.token}")
+                Log.d("LoginController", "invoke: name:${result.loginResult.name} userId:${result.loginResult.userId} token:${result.loginResult.token}")
                 emit(ResultMain.Success(result.message))
             }
         }

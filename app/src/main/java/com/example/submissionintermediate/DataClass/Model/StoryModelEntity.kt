@@ -1,9 +1,8 @@
 package com.example.submissionintermediate.DataClass.Model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 data class StoryModelEntity(
     val id: String,
     val name: String,
