@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvStories"
         android:layout_width="match_parent"
-        android:layout_height="639dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,9 +18,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_stories"
-            android:elevation="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="10dp"
             tools:listitem="@layout/item_rv">
 
         </androidx.recyclerview.widget.RecyclerView>
